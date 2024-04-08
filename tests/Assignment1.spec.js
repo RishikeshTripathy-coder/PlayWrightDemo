@@ -7,14 +7,17 @@ test('Playwright assignment', async ({ page }) => {
 
     // Visibility of  'Offers' ,'Orders' & 'Favourites'
     await expect(page.locator("nav.space-x-4")).toBeVisible();
-    const Header1 = await page.locator("a#offers").textContent();
-    console.log(Header1);
-    await expect(page.locator("a#offers")).toContainText("Offers");
 
-    const Header2 = await expect(page.locator("a#orders")).toContainText("Orders");
-    expect(Header2).toBeTruthy();
+    const headOffers = await page.locator("a#offers");
+    await expect(headOffers).toContainText("Offers");
 
-    await expect(page.locator("a#favourites")).toContainText("Favourites");
+    const headOrders = await page.locator("a#orders");
+    await expect(headOrders).toContainText("Orders");
+    expect(headOrders).toBeTruthy();
+
+    const headFavourite = await page.locator("a#favourites");
+    await expect(headFavourite).toContainText("Favourites");
+
     //   Signin action
     await page.locator("a#signin").click();
     // Print placeholder value in Username & Password
@@ -37,8 +40,12 @@ test('Playwright assignment', async ({ page }) => {
     await page.locator("button#login-btn").click();
 
 
-    const Validate = await expect(page.locator("span.username")).toBeVisible();
-    expect(Validate).toBeTruthy;
-    await page.locator("a#logout").click();
+    const btnLogin = await page.locator("button#login-btn");
+    await btnLogin.click();
 
+
+    const Validate = await page.locator("span.username");
+   console.log(await Validate.textContent());
+    await expect(Validate).toBeTruthy;
+    await page.locator("a#logout").click();
 });
