@@ -4,7 +4,7 @@ const FirName = "Rohit";
 const LtName = "Sharma";
 const TelePhone = "75460416060";
 const Pass = "Rohit@45";
-const email = "sharma.rohit.3@gmail.com";
+const email = "sharma.rohit.48@gmail.com";
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://ecommerce-playground.lambdatest.io/index.php?route=common/home');
@@ -52,14 +52,14 @@ test('Lambdatest Assignment', async ({ page }) => {
   // await Success.isVisible();
   await expect(Success).toContainText(" Your Account Has Been Created!");
 
-  const continueBtn = await page.locator("div.buttons");
+  const continueBtn = await page.locator("div.buttons a.btn");
   await continueBtn.click();
 
   const Header = await page.locator("p[class='m-0 font-size-sm'] strong");
   await expect(Header).toBeVisible();
   // await page.pause();
-  const MyAccdropDown = await page.locator("a[class='icon-left both nav-link dropdown-toggle active'] span[class='title']");
-  await MyAccdropDown.hover();
+  
+  await MyAccount.hover();
 
   const logOut = await page.locator("//span[normalize-space()='Logout']");
   await logOut.click();
@@ -73,10 +73,10 @@ test('Lambdatest Assignment', async ({ page }) => {
   await LogInbtn.click();
   
   await LoginEmail.fill(email);
-  await LoginPass.fill(pass);
+  await LoginPass.fill(Pass);
 
   await page.locator("input[value='Login']").click();
-  await MyAccdropDown.isVisible();
+  await MyAccount.isVisible();
   await expect(Header).toBeVisible();
 });
 // test.afterEach(async ({ page }) => {
