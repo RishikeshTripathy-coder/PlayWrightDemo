@@ -6,6 +6,30 @@ const TelePhone = "75460416060";
 const Pass = "Rohit@45";
 const email = "sharma.rohit.48@gmail.com";
 
+
+function modifyGmail(email) {
+
+  var parts = email.split('@');
+    if (parts.length !== 2 || parts[1] !== 'gmail.com') {
+        console.log("Invalid Gmail address. Please provide a valid Gmail address.");
+        return null;
+    }
+    var username = parts[0];
+    var domain = parts[1];
+
+    // Generate a random string to append to the username
+    var randomString = Math.random().toString(36).substring(2, 4);
+     
+    // Modified email address with the random string appended to the username
+    var modifiedEmail = username + '.' + randomString + '@' + domain;
+    
+    return modifiedEmail;
+}
+const originalEmail = 'sharma.rohit@gmail.com';
+let modifiedEmail = modifyGmail(originalEmail);
+
+
+
 test.beforeEach(async ({ page }) => {
   await page.goto('https://ecommerce-playground.lambdatest.io/index.php?route=common/home');
 });
@@ -33,7 +57,7 @@ test('Lambdatest Assignment', async ({ page }) => {
   // Entering values in fields
   await firstName.fill(FirName);
   await lastName.fill(LtName);
-  await RegEmail.fill(email);
+  await RegEmail.fill(modifiedEmail);
   await Phone.fill(TelePhone);
   await RegPassword.fill(Pass);
   await CnfPassword.fill(Pass);
@@ -72,15 +96,11 @@ test('Lambdatest Assignment', async ({ page }) => {
   const LogInbtn = await page.locator("a[href*='https://ecommerce-playground.lambdatest.io/index.php?route=account/login']");
   await LogInbtn.click();
   
-  await LoginEmail.fill(email);
+  await LoginEmail.fill(modifiedEmail);
   await LoginPass.fill(Pass);
 
   await page.locator("input[value='Login']").click();
   await MyAccount.isVisible();
   await expect(Header).toBeVisible();
 });
-// test.afterEach(async ({ page }) => {
-
-//   await page.goto('https://ecommerce-playground.lambdatest.io/index.php?route=common/home');
-// });
 
