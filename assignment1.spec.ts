@@ -83,5 +83,4 @@ test.describe('Demo Test', () => {
 
 
 
-// Run the test
-//runTest().catch(err => console.error(err));
+
