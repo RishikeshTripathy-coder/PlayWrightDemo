@@ -1,0 +1,17 @@
+{
+    "Email": "rishi@gmail.com",
+    "Password": "rishi",
+    "firstname":"rishi",
+    "lastname":"rishi",
+    "city":"Pune",
+    "postcode":"411057",
+    "address1":"abc",
+    "EmptyCredentials": {
+        "EmptyEmailID": "",
+        "EmptyPassword": ""
+    },
+    "IncorrectCredentials": {
+        "IncorrectEmailID": "abc@gmail.com",
+        "IncorrectPassword": "QWERTY"
+    }
+}
